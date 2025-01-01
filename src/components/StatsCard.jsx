@@ -1,11 +1,11 @@
-import { ShoppingCart, Package, RefreshCw } from 'react-feather';
+import { ShoppingCart, Package, RefreshCw } from "react-feather";
 
 function StatsCard() {
   const stores = [
     {
-      name: 'Bricklink',
+      name: "Bricklink",
       isPrimary: true,
-      lastChecked: '1 minute ago',
+      lastChecked: "1 minute ago",
       stats: {
         orders: 6,
         lots: 0,
@@ -13,9 +13,9 @@ function StatsCard() {
       },
     },
     {
-      name: 'Brick Owl',
+      name: "Brick Owl",
       isPrimary: false,
-      lastChecked: '1 minute ago',
+      lastChecked: "1 minute ago",
       stats: {
         orders: 0,
         lots: 274,
@@ -33,7 +33,7 @@ function StatsCard() {
           <span className="text-sm">Sync Inventory</span>
         </button>
       </div>
-      <hr />
+      <hr className="border-gray-400" />
       <div className="">
         {stores.map((store) => (
           <div

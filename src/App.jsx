@@ -1,20 +1,28 @@
-import { useState } from 'react'
-import Sidebar from './components/Sidebar'
-import Dashboard from './components/Dashboard'
-import './index.css'
+import { useState } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Sidebar from "./components/Sidebar";
+import Dashboard from "./components/Dashboard";
+import OrderPage from "./components/OrderPage";
+import "./index.css";
 
 function App() {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true)
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   return (
-    <div className="app">
-      <Sidebar isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} />
-      <main className={`main-content ${isSidebarOpen ? 'sidebar-open' : ''}`}>
-        <Dashboard />
-      </main>
-    </div>
-  )
+    <Router>
+      <div className="app">
+        <Sidebar isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} />
+        <main className={`main-content ${isSidebarOpen ? "sidebar-open" : ""}`}>
+          <Routes>
+            <Route path="/" element={<Dashboard />} />{" "}
+            {/* Default route for Dashboard */}
+            <Route path="/orders" element={<OrderPage />} />{" "}
+            {/* Route for Order page */}
+          </Routes>
+        </main>
+      </div>
+    </Router>
+  );
 }
 
-export default App
-
+export default App;

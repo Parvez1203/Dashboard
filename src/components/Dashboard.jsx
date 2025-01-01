@@ -1,10 +1,11 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import StatsCard from './StatsCard';
-import LineChart from './LineChart';
-import DonutChart from './DonutChart';
-import ActivityFeed from './ActivityFeed';
-import { Search, ChevronDown, User, Settings, LogOut } from 'react-feather';
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import StatsCard from "./StatsCard";
+import LineChart from "./LineChart";
+import DonutChart from "./DonutChart";
+import { ByBuyers } from "./ByBuyers";
+import ActivityFeed from "./ActivityFeed";
+import { Search, ChevronDown, User, Settings, LogOut } from "react-feather";
 
 function Dashboard() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -84,7 +85,7 @@ function Dashboard() {
           </div>
 
           <div className="space-y-6 h-full">
-            <ActivityFeed />
+            <ByBuyers />
           </div>
 
           <div className="bg-white rounded-xl p-6 card-shadow lg:col-span-2">
