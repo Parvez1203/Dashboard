@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   Monitor,
   Archive,
@@ -13,7 +13,7 @@ import { NavLink } from "react-router-dom";
 function Sidebar({ isOpen, setIsOpen }) {
   const menuItems = [
     { icon: Monitor, label: "Dashboard", active: true, path: "/" },
-    { icon: Archive, label: "Inventory", path: "/inventory" },
+    { icon: Archive, label: "Inventory", path: "/pickupitems" },
     { icon: ShoppingCart, label: "Orders", path: "/orders" },
     { icon: Settings, label: "Settings", path: "/settings" },
     { icon: HelpCircle, label: "Help", path: "/help" },

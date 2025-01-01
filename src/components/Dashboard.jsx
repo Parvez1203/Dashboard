@@ -4,7 +4,6 @@ import StatsCard from "./StatsCard";
 import LineChart from "./LineChart";
 import DonutChart from "./DonutChart";
 import { ByBuyers } from "./ByBuyers";
-import ActivityFeed from "./ActivityFeed";
 import { Search, ChevronDown, User, Settings, LogOut } from "react-feather";
 
 function Dashboard() {

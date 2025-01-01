@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import Dashboard from "./components/Dashboard";
 import OrderPage from "./components/OrderPage";
+import PickUpItemsPage from "./components/PickUpItemPage";
 import "./index.css";
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
             {/* Default route for Dashboard */}
             <Route path="/orders" element={<OrderPage />} />{" "}
             {/* Route for Order page */}
+            <Route path="/pickupitems" element={<PickUpItemsPage />} />{" "}
           </Routes>
         </main>
       </div>
