@@ -248,3 +248,30 @@ p {
     @apply bg-background text-foreground;
   }
 }
+
+/* Remove border around the entire calendar */
+.react-calendar {
+  border: none !important;
+}
+
+/* Remove borders around calendar tiles (dates) */
+.react-calendar__tile {
+  border: none !important;
+}
+
+/* Change background color for the selected date to lime */
+.react-calendar__tile--active {
+  background-color: lime !important;
+  color: white !important; /* Adjust text color for contrast */
+}
+
+/* Keep today's date highlighted in blue */
+.react-calendar__tile--now {
+  background-color: blue !important;
+  color: white !important; /* Adjust text color for contrast */
+}
+
+/* Keep today highlighted in blue even when selected */
+.react-calendar__tile--now.react-calendar__tile--active {
+  background-color: blue !important;
+}

@@ -13,7 +13,7 @@ import { NavLink } from "react-router-dom";
 function Sidebar({ isOpen, setIsOpen }) {
   const menuItems = [
     { icon: Monitor, label: "Dashboard", active: true, path: "/" },
-    { icon: Archive, label: "Inventory", path: "/pickupitems" },
+    { icon: Archive, label: "Inventory", path: "/inventory" },
     { icon: ShoppingCart, label: "Orders", path: "/orders" },
     { icon: Settings, label: "Settings", path: "/settings" },
     { icon: HelpCircle, label: "Help", path: "/help" },
@@ -35,15 +35,19 @@ function Sidebar({ isOpen, setIsOpen }) {
         <nav className="nav-menu">
           {menuItems.map((item, index) => (
             <>
-              {item.label === "Log out" && <hr />}
+              {item.label === "Log out" && <hr className="border-gray-400" />}
               <NavLink
                 key={item.label}
                 to={item.path}
                 className={({ isActive }) =>
-                  `nav-item ${isActive ? "active" : ""}`
+                  `nav-item ${
+                    (location.pathname === "/pickupitems" &&
+                      item.path === "/orders") ||
+                    isActive
+                      ? "active"
+                      : ""
+                  }`
                 }
-                whileHover={{ x: 5 }}
-                transition={{ duration: 0.2 }}
               >
                 <item.icon size={20} />
                 <span>{item.label}</span>

@@ -83,8 +83,10 @@ function Dashboard() {
             </div>
           </div>
 
-          <div className="space-y-6 h-full">
-            <ByBuyers />
+          <div className="lg:row-span-2">
+            <div className="space-y-6 h-full">
+              <ByBuyers />
+            </div>
           </div>
 
           <div className="bg-white rounded-xl p-6 card-shadow lg:col-span-2">

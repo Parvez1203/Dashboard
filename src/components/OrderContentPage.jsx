@@ -11,12 +11,29 @@ import {
 } from "react-feather";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
+import { ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 // Order view component
 function OrderPageContent() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [viewMode, setViewMode] = useState("table"); // 'table' or 'grid'
   const [selectedDate, setSelectedDate] = useState(new Date());
+  const navigate = useNavigate();
+
+  function StartPickUpButton() {
+    return (
+      <div className="flex justify-center mt-6">
+        <button
+          className="bg-blue-600 text-white px-8 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2"
+          onClick={() => navigate("/pickupitems")}
+        >
+          Start Pick Up
+          <ArrowRight size={18} />
+        </button>
+      </div>
+    );
+  }
 
   const orders = [
     {
@@ -116,24 +133,6 @@ function OrderPageContent() {
         <div className="space-y-4">
           <div className="flex justify-between items-center">
             <span className="text-md font-semibold">Stores</span>
-            <div className="flex gap-2">
-              <button
-                onClick={() => setViewMode("table")}
-                className={`p-2 rounded ${
-                  viewMode === "table" ? "bg-gray-100" : ""
-                }`}
-              >
-                <List size={20} />
-              </button>
-              <button
-                onClick={() => setViewMode("grid")}
-                className={`p-2 rounded ${
-                  viewMode === "grid" ? "bg-gray-100" : ""
-                }`}
-              >
-                <Grid size={20} />
-              </button>
-            </div>
           </div>
 
           {/* Store checkboxes */}
@@ -167,9 +166,30 @@ function OrderPageContent() {
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
         <div className="lg:col-span-3">
           <div className="bg-white rounded-xl p-6 card-shadow">
-            <span className="text-md font-semibold mb-4">
-              In Progress Orders
-            </span>
+            <div className="flex justify-between items-center mb-4">
+              <span className="text-md font-semibold mb-4">
+                In Progress Orders
+              </span>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => setViewMode("table")}
+                  className={`p-2 rounded ${
+                    viewMode === "table" ? "bg-gray-100" : ""
+                  }`}
+                >
+                  <List size={20} />
+                </button>
+                <button
+                  onClick={() => setViewMode("grid")}
+                  className={`p-2 rounded ${
+                    viewMode === "grid" ? "bg-gray-100" : ""
+                  }`}
+                >
+                  <Grid size={20} />
+                </button>
+              </div>
+            </div>
+
             {viewMode === "table" ? (
               <div className="overflow-x-auto">
                 <table className="min-w-full">
@@ -285,6 +305,7 @@ function OrderPageContent() {
                 ))}
               </div>
             )}
+            <StartPickUpButton />
           </div>
         </div>
 
@@ -343,6 +364,7 @@ function OrderPageContent() {
           </div>
         </div>
       </div>
+      <div></div>
     </div>
   );
 }
