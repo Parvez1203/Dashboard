@@ -275,3 +275,11 @@ p {
 .react-calendar__tile--now.react-calendar__tile--active {
   background-color: blue !important;
 }
+
+.custom-radius {
+  border-radius: 9.37px;
+}
+
+.heading-radius {
+  border-radius: 3.75px;
+}

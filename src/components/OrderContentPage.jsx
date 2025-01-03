@@ -9,10 +9,222 @@ import {
   Grid,
   List,
 } from "react-feather";
+import { Bell, MessageCircle, ExternalLink, Box } from "react-feather";
 import Calendar from "react-calendar";
+import { Link } from "react-router-dom";
 import "react-calendar/dist/Calendar.css";
 import { ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import myImage from "./ui/watch.jpg";
+
+const tasks = [
+  { id: 1, title: "Schedule post Dusk&Dawn", completed: true },
+  { id: 2, title: "Design post for Holi", completed: true },
+  { id: 3, title: "Brainstorming new project", completed: false },
+  { id: 4, title: "Re-Branding Discussion", completed: false },
+];
+
+const orders = [
+  {
+    id: "174.10",
+    product: "Dollar watch",
+    image: myImage,
+    buyer: "bommibricks",
+    date: "20/12/2024",
+    location: "Warehouse 1",
+    lots: "2/4",
+    items: "9/13",
+    total: "$123",
+    status: "Packed",
+    store: "BrickLink",
+    weight: "2.2 Oz",
+  },
+  {
+    id: "174.10",
+    product: "Dollar watch",
+    image: myImage,
+    buyer: "bommibricks",
+    date: "20/12/2024",
+    location: "Warehouse 1",
+    lots: "2/4",
+    items: "9/13",
+    total: "$123",
+    status: "In Progress",
+    store: "BrickLink",
+    weight: "2.2 Oz",
+  },
+  {
+    id: "174.10",
+    product: "Dollar watch",
+    image: myImage,
+    buyer: "bommibricks",
+    date: "20/12/2024",
+    location: "Warehouse 1",
+    lots: "2/4",
+    items: "9/13",
+    total: "$123",
+    status: "Packed",
+    store: "BrickLink",
+    weight: "2.2 Oz",
+  },
+  {
+    id: "174.10",
+    product: "Dollar watch",
+    image: myImage,
+    buyer: "bommibricks",
+    date: "20/12/2024",
+    location: "Warehouse 1",
+    lots: "2/4",
+    items: "9/13",
+    total: "$123",
+    status: "Dispatched",
+    store: "BrickOwl",
+    weight: "2.2 Oz",
+  },
+  {
+    id: "174.10",
+    product: "Dollar watch",
+    image: myImage,
+    buyer: "bommibricks",
+    date: "20/12/2024",
+    location: "Warehouse 1",
+    lots: "2/4",
+    items: "9/13",
+    total: "$123",
+    status: "Packed",
+    store: "BrickLink",
+    weight: "2.2 Oz",
+  },
+  {
+    id: "174.10",
+    product: "Dollar watch",
+    image: myImage,
+    buyer: "bommibricks",
+    date: "20/12/2024",
+    location: "Warehouse 1",
+    lots: "2/4",
+    items: "9/13",
+    total: "$123",
+    status: "Packed",
+    store: "BrickLink",
+    weight: "2.2 Oz",
+  },
+  {
+    id: "174.10",
+    product: "Dollar watch",
+    image: myImage,
+    buyer: "bommibricks",
+    date: "20/12/2024",
+    location: "Warehouse 1",
+    lots: "2/4",
+    items: "9/13",
+    total: "$123",
+    status: "Packed",
+    store: "BrickLink",
+    weight: "2.2 Oz",
+  },
+  {
+    id: "174.10",
+    product: "Dollar watch",
+    image: myImage,
+    buyer: "bommibricks",
+    date: "20/12/2024",
+    location: "Warehouse 1",
+    lots: "2/4",
+    items: "9/13",
+    total: "$123",
+    status: "Packed",
+    store: "BrickLink",
+    weight: "2.2 Oz",
+  },
+
+  // Add more orders as needed
+];
+
+function OrderCard({ order }) {
+  return (
+    <div className=" rounded-lg p-4 shadow-sm shadow-lg bg-white mb-6">
+      <div className="flex items-start justify-between mb-4">
+        <div className="flex-1">
+          <div className="flex items-center gap-2 mb-2">
+            <input type="checkbox" className="rounded" />
+            <div className="bg-black text-white text-xs px-2 py-1 heading-radius">
+              O no.#{order.id}
+            </div>
+          </div>
+          <div className="flex items-center gap-2 mb-2">
+            <h3 className="text-lg font-medium">{order.product}</h3>
+            <Link to={`/order/${order.id}`}>
+              <ExternalLink size={14} className="text-blue-600" />
+            </Link>
+          </div>
+          <p className="text-gray-600 text-sm">{order.date}</p>
+        </div>
+        {order.image && (
+          <div className="relative">
+            <div className="w border-2 rounded-lg border-black relative">
+              <img
+                src={order.image}
+                alt={order.product}
+                className="w-10 h-10 object-contain rounded border"
+              />
+            </div>
+            <div className="text-center text-sm text-gray-600 mt-2">
+              {order.weight}
+            </div>
+          </div>
+        )}
+      </div>
+
+      <div className=" flex flex-wrap gap-2 mb-3">
+        <span
+          className={`px-3 py-1  text-xs ${
+            order.store === "BrickLink"
+              ? "bg-[#EDFEB7] text-[#839500]"
+              : "bg-[#BCD3FF] text-[#0A0095]"
+          } custom-radius`}
+        >
+          {order.store}
+        </span>
+        <span className="bg-[#BCD3FF] text-[#0A0095] px-3 py-1 custom-radius text-xs">
+          {order.total}
+        </span>
+        <span
+          className={`px-3 py-1 rounded-full text-xs ${
+            order.status === "Packed"
+              ? "bg-[#007813] text-white"
+              : order.status === "In Progress"
+              ? "bg-[#C51616] text-white"
+              : order.status === "Dispatched"
+              ? "bg-[#000278] text-white"
+              : "bg-orange-800 text-white"
+          } custom-radius`}
+        >
+          {order.status}
+        </span>
+      </div>
+
+      <div className="flex items-center justify-center gap-12 bg-gray-100 text-sm text-gray-600 -mx-4 -mb-4 px-4 py-3 rounded-b-lg">
+        <div className="flex items-center gap-2">
+          <Box className="text-black" size={20} />
+          <span className="text-sm font-semibold text:[#4442C]">
+            {order.lots} lots
+          </span>
+        </div>
+        <div className="flex items-center gap-2">
+          <input
+            type="checkbox"
+            className="w-5 h-5 appearance-none border-2 border-black checked:bg-black rounded:md checked:text-white checked:before:content-['✓'] checked:before:flex checked:before:justify-center checked:before:items-center focus:outline-none"
+            defaultChecked
+          />
+          <span className="text-sm font-semibold text:[#4442C]">
+            {order.items} items
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 // Order view component
 function OrderPageContent() {
@@ -34,98 +246,6 @@ function OrderPageContent() {
       </div>
     );
   }
-
-  const orders = [
-    {
-      id: "174.10",
-      product: "Dollar watch",
-      buyer: "bommibricks",
-      date: "20/12/2024",
-      location: "Warehouse 1",
-      lots: "2/7",
-      total: "$123",
-      status: "Packed",
-    },
-    {
-      id: "174.10",
-      product: "Dollar watch",
-      buyer: "bommibricks",
-      date: "20/12/2024",
-      location: "Warehouse 1",
-      lots: "2/7",
-      total: "$123",
-      status: "Packed",
-    },
-    {
-      id: "174.10",
-      product: "Dollar watch",
-      buyer: "bommibricks",
-      date: "20/12/2024",
-      location: "Warehouse 1",
-      lots: "2/7",
-      total: "$123",
-      status: "Packed",
-    },
-    {
-      id: "174.10",
-      product: "Dollar watch",
-      buyer: "bommibricks",
-      date: "20/12/2024",
-      location: "Warehouse 1",
-      lots: "2/7",
-      total: "$123",
-      status: "Packed",
-    },
-    {
-      id: "174.10",
-      product: "Dollar watch",
-      buyer: "bommibricks",
-      date: "20/12/2024",
-      location: "Warehouse 1",
-      lots: "2/7",
-      total: "$123",
-      status: "Packed",
-    },
-    {
-      id: "174.10",
-      product: "Dollar watch",
-      buyer: "bommibricks",
-      date: "20/12/2024",
-      location: "Warehouse 1",
-      lots: "2/7",
-      total: "$123",
-      status: "Packed",
-    },
-    {
-      id: "174.10",
-      product: "Dollar watch",
-      buyer: "bommibricks",
-      date: "20/12/2024",
-      location: "Warehouse 1",
-      lots: "2/7",
-      total: "$123",
-      status: "Packed",
-    },
-    {
-      id: "174.10",
-      product: "Dollar watch",
-      buyer: "bommibricks",
-      date: "20/12/2024",
-      location: "Warehouse 1",
-      lots: "2/7",
-      total: "$123",
-      status: "Packed",
-    },
-
-    // Add more orders as needed
-  ];
-
-  const tasks = [
-    { id: 1, title: "Schedule post Dusk&Dawn", completed: true },
-    { id: 2, title: "Design post for Holi", completed: true },
-    { id: 3, title: "Brainstorming new project", completed: false },
-    { id: 4, title: "Re-Branding Discussion", completed: false },
-  ];
 
   return (
     <div className="py-6 pt-0">
@@ -165,7 +285,13 @@ function OrderPageContent() {
       {/* Order list */}
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
         <div className="lg:col-span-3">
-          <div className="bg-white rounded-xl p-6 card-shadow">
+          <div
+            className={`${
+              viewMode === "grid"
+                ? "p-6"
+                : "bg-white rounded-xl p-6 card-shadow"
+            }`}
+          >
             <div className="flex justify-between items-center mb-4">
               <span className="text-md font-semibold mb-4">
                 In Progress Orders
@@ -273,35 +399,9 @@ function OrderPageContent() {
                 </table>
               </div>
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 {orders.map((order) => (
-                  <div key={order.id} className="border rounded-lg p-4">
-                    <div className="flex justify-between items-start mb-3">
-                      <div>
-                        <h3 className="font-medium">{order.product}</h3>
-                        <p className="text-sm text-gray-500">{order.buyer}</p>
-                      </div>
-                      <input type="checkbox" className="rounded" />
-                    </div>
-                    <div className="space-y-2 text-sm">
-                      <p>Order#: {order.id}</p>
-                      <p>Date: {order.date}</p>
-                      <p>Location: {order.location}</p>
-                      <p>Lots/Items: {order.lots}</p>
-                      <p>Total: {order.total}</p>
-                    </div>
-                    <div className="mt-3">
-                      <span
-                        className={`px-3 py-1 rounded-full text-sm ${
-                          order.status === "Packed"
-                            ? "bg-green-100 text-green-800"
-                            : "bg-purple-100 text-purple-800"
-                        }`}
-                      >
-                        {order.status}
-                      </span>
-                    </div>
-                  </div>
+                  <OrderCard key={order.id} order={order} />
                 ))}
               </div>
             )}

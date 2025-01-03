@@ -75,7 +75,7 @@ function Dashboard() {
       <div className="py-6 pt-0">
         <StatsCard />
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6 auto-rows-min">
           <div className="lg:col-span-2">
             <div className="bg-white rounded-xl p-6 card-shadow">
               <h2 className="font-medium mb-4">Sales in last 6 Months</h2>
