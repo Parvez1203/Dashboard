@@ -1,10 +1,10 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import StatsCard from './StatsCard';
-import LineChart from './LineChart';
-import DonutChart from './DonutChart';
-import ActivityFeed from './ActivityFeed';
-import { Search, ChevronDown, User, Settings, LogOut } from 'react-feather';
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import StatsCard from "./StatsCard";
+import LineChart from "./LineChart";
+import DonutChart from "./DonutChart";
+import { ByBuyers } from "./ByBuyers";
+import { Search, ChevronDown, User, Settings, LogOut } from "react-feather";
 
 function Dashboard() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -75,7 +75,7 @@ function Dashboard() {
       <div className="py-6 pt-0">
         <StatsCard />
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6 auto-rows-min">
           <div className="lg:col-span-2">
             <div className="bg-white rounded-xl p-6 card-shadow">
               <h2 className="font-medium mb-4">Sales in last 6 Months</h2>
@@ -83,8 +83,10 @@ function Dashboard() {
             </div>
           </div>
 
-          <div className="space-y-6 h-full">
-            <ActivityFeed />
+          <div className="lg:row-span-2">
+            <div className="space-y-6 h-full">
+              <ByBuyers />
+            </div>
           </div>
 
           <div className="bg-white rounded-xl p-6 card-shadow lg:col-span-2">

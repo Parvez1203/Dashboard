@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from "framer-motion";
 import {
   Monitor,
   Archive,
@@ -7,16 +7,17 @@ import {
   HelpCircle,
   LogOut,
   Menu,
-} from 'react-feather';
+} from "react-feather";
+import { NavLink } from "react-router-dom";
 
 function Sidebar({ isOpen, setIsOpen }) {
   const menuItems = [
-    { icon: Monitor, label: 'Dashboard', active: true },
-    { icon: Archive, label: 'Inventory' },
-    { icon: ShoppingCart, label: 'Orders' },
-    { icon: Settings, label: 'Settings' },
-    { icon: HelpCircle, label: 'Help' },
-    { icon: LogOut, label: 'Log out' },
+    { icon: Monitor, label: "Dashboard", active: true, path: "/" },
+    { icon: Archive, label: "Inventory", path: "/inventory" },
+    { icon: ShoppingCart, label: "Orders", path: "/orders" },
+    { icon: Settings, label: "Settings", path: "/settings" },
+    { icon: HelpCircle, label: "Help", path: "/help" },
+    { icon: LogOut, label: "Log out", path: "/logout" },
   ];
 
   return (
@@ -24,7 +25,7 @@ function Sidebar({ isOpen, setIsOpen }) {
       <motion.div
         className="sidebar"
         animate={{ width: isOpen ? 240 : 0 }}
-        transition={{ duration: 0.3, ease: 'easeInOut' }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
       >
         <div className="logo">
           {/* <img src="/nucleus-logo.svg" alt="Nucleus" /> */}
@@ -34,17 +35,23 @@ function Sidebar({ isOpen, setIsOpen }) {
         <nav className="nav-menu">
           {menuItems.map((item, index) => (
             <>
-              {item.label === 'Log out' && <hr />}
-              <motion.a
+              {item.label === "Log out" && <hr className="border-gray-400" />}
+              <NavLink
                 key={item.label}
-                href="#"
-                className={`nav-item ${item.active ? 'active' : ''}`}
-                whileHover={{ x: 5 }}
-                transition={{ duration: 0.2 }}
+                to={item.path}
+                className={({ isActive }) =>
+                  `nav-item ${
+                    (location.pathname === "/pickupitems" &&
+                      item.path === "/orders") ||
+                    isActive
+                      ? "active"
+                      : ""
+                  }`
+                }
               >
                 <item.icon size={20} />
                 <span>{item.label}</span>
-              </motion.a>
+              </NavLink>
             </>
           ))}
         </nav>
